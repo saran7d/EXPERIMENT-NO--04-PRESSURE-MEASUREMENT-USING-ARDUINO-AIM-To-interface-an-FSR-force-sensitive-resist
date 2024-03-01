@@ -63,10 +63,17 @@ The easiest way to measure a resistive sensor is to connect one end to power and
 
 
 ### FIGURE-03 CIRCUIT DIAGRAM
-![image](https://github.com/SanthoshThiru/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/148958618/f3be5cc6-e7d9-4270-91c7-9d145afa26ae)
+### OFF:
+![Screenshot 2024-03-01 162045](https://github.com/saran7d/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/104412179/b49bb6c5-94d1-4f3b-8e5f-1eaab9c5598e)
+
+### ON:
+![Screenshot 2024-03-01 162135](https://github.com/saran7d/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/104412179/235edda0-52d1-4cda-b7b0-3099c295909e)
+
+
 
 ### SCHEMATIC DIAGRAM
-![image](https://github.com/SanthoshThiru/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/148958618/c6734d8a-9be8-49d0-be3b-8d5299bdb17a)
+![Screenshot 2024-03-01 162022](https://github.com/saran7d/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/104412179/2c074d93-039f-430d-b3ce-2e4da0fae380)
+
 
 
 ### PROCEDURE:
@@ -88,43 +95,38 @@ int LED=7;
 int FSR;
 void setup()
 {
-  pinMode(LED, OUTPUT);
+  pinMode(LED,OUTPUT);
   Serial.begin(9600);
 }
-
 void loop()
 {
-  
   FSR =analogRead(A0);
-  Serial.print("Raw value=");
+  Serial.print("RAW VALUE=");
   Serial.println(FSR);
-  delay(500); 
+  delay(500);
   int m;
   m=map(FSR,0,159,0,10);
-  Serial.print("Mapped Value=");
+  Serial.print("mapped value=");
   Serial.println(m);
-  
   if(FSR>50)
   {
     digitalWrite(LED,LOW);
     delay(500);
     digitalWrite(LED,HIGH);
     delay(500);
-
-    
   }
-  
-  
-  }
+}
 ```
 
 
-![image](https://github.com/SanthoshThiru/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/148958618/ee242106-5d83-456e-a608-d0e6fc1644fc)
+![Screenshot 2024-03-01 161557](https://github.com/saran7d/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/104412179/6f5e6cd4-a2db-4183-8b47-499264112ea5)
+
 
  
 ### Figure 04 COMPARISION OF APPLIED AND MAPPED FORCES 
  
- ![image](https://github.com/SanthoshThiru/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/148958618/a72c3aed-6510-49dc-bd2d-6cf902cea6fe)
+ ![Screenshot 2024-03-01 185905](https://github.com/saran7d/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/104412179/ca4fc764-d670-4856-87a4-0da08b345eb6)
+
 
  
  
@@ -171,4 +173,5 @@ For those unfamiliar with summation notation, the equation above may seem daunti
 
 
 
-### RESULTS : Arduino uno is interfaced with FSR and output values are indicated on a graph.
+### RESULTS :
+Arduino uno is interfaced with FSR and output values are indicated on a graph.
