@@ -1,11 +1,10 @@
 # EXPERIMENT-NO--03-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resistor
+ ###  DATE: 01-03-2024
 
-# DATE : 01-03-2024
-# NAME : SARAN S S
-# ROLLNUMBER : 212221220048
-# DEPARTMENT : IT
-
-
+###  NAME: SARAN S S
+###  ROLL NO :212221220048
+###  DEPARTMENT:INFORMATION TECHNOLOGY 
+### YEAR: 3RD YEAR
 ## AIM: 
 To interface an FSR(force sensitive resistor) and scale the output voltage obtained to pressure applied 
  
@@ -50,13 +49,24 @@ The easiest way to measure a resistive sensor is to connect one end to power and
 ****Where R= 1KΩ in this experiment 
 ****That is, the voltage is proportional to the inverse of the FSR resistance.
 
-![image](https://github.com/SamyukthaSreenivasan/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/119475703/c445c0e1-f324-49a5-b0a6-b1bf41430783)
+
+
+
+
+
+
+
+
+
+![image](https://user-images.githubusercontent.com/36288975/163532979-a2a5cb5c-f495-442c-843e-bebb82737a35.png)
 
 
 
 ### FIGURE-03 CIRCUIT DIAGRAM
+![image](https://github.com/SanthoshThiru/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/148958618/f3be5cc6-e7d9-4270-91c7-9d145afa26ae)
 
-![image](https://github.com/SamyukthaSreenivasan/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/119475703/564143af-d39a-442e-967b-a9b29e4ca9b4)
+### SCHEMATIC DIAGRAM
+![image](https://github.com/SanthoshThiru/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/148958618/c6734d8a-9be8-49d0-be3b-8d5299bdb17a)
 
 
 ### PROCEDURE:
@@ -74,12 +84,8 @@ The easiest way to measure a resistive sensor is to connect one end to power and
 
 ### PROGRAM 
 ```
-DEVELOPED BY: Saran S S
-REGISTER NUMBER: 21222122048
-```
-```
-int fsr;
 int LED=7;
+int FSR;
 void setup()
 {
   pinMode(LED, OUTPUT);
@@ -88,36 +94,56 @@ void setup()
 
 void loop()
 {
-  fsr=analogRead(A0);
-  Serial.print("raw value=");
-  Serial.println(fsr);
-  delay(1000);
+  
+  FSR =analogRead(A0);
+  Serial.print("Raw value=");
+  Serial.println(FSR);
+  delay(500); 
   int m;
-  m=map(fsr,0,159,0,10);
-  Serial.print("Mapped value");
+  m=map(FSR,0,159,0,10);
+  Serial.print("Mapped Value=");
   Serial.println(m);
-  delay(1000);
+  
+  if(FSR>50)
+  {
+    digitalWrite(LED,LOW);
+    delay(500);
+    digitalWrite(LED,HIGH);
+    delay(500);
 
-if(m>5)
-{
-  digitalWrite(LED,HIGH);
-  delay(500);
-  digitalWrite(LED,LOW);
-  delay(500);
-}
-}
+    
+  }
+  
+  
+  }
 ```
+
+
+![image](https://github.com/SanthoshThiru/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/148958618/ee242106-5d83-456e-a608-d0e6fc1644fc)
+
  
-### TABLE -02 standard deviation table 
+### Figure 04 COMPARISION OF APPLIED AND MAPPED FORCES 
+ 
+ ![image](https://github.com/SanthoshThiru/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/148958618/a72c3aed-6510-49dc-bd2d-6cf902cea6fe)
 
-![image](https://github.com/SamyukthaSreenivasan/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/119475703/5532547d-909b-4349-8c59-351e58867cca)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
-
-![image](https://github.com/SamyukthaSreenivasan/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/119475703/5c4dff11-098d-4f0b-8027-fc907d7714b4)
 
 
 ### Population Standard Deviation
 The population standard deviation, the standard definition of σ, is used when an entire population can be measured, and is the square root of the variance of a given data set. In cases where every member of a population can be sampled, the following equation can be used to find the standard deviation of the entire population:
+
+
 
 Where
 xi is an individual value
@@ -125,11 +151,24 @@ xi is an individual value
 N is the total number of values
 
 For those unfamiliar with summation notation, the equation above may seem daunting, but when addressed through its individual components, this summation is not particularly complicated. The i=1 in the summation indicates the starting index, i.e. for the data set 1, 3, 4, 7, 8, i=1 would be 1, i=2 would be 3, and so on. Hence the summation notation simply means to perform the operation of (xi - μ)2 on each value through N, which in this case is 5 since there are 5 values in this data set.
+### CALCULATION
+```
+μ = (0.9+2.02+2.99+4.03+4.95+5.97+6.92+7.94+9.03+10) / 10 = 5.484        
+σ = √[(0.99- 5.484)^2 + (3 - 5.484)^2 + ... + (10- 5.484)^2)]/10
+σ = √(12.13826 +9+16+25+36+49+64+64+81+100)/10 = 2.135739
 
-EX:           μ = (2+2+4+5+6+7+8+9+9+10) / 10 = 6.2        
-σ = √(2-6.2)=17.64
-σ = √75.6 = 8.69
+```
 
 
-### RESULTS : 
-Arduino uno is interfaced with FSR and output values are indicated on a graph.
+
+
+
+
+
+
+
+
+
+
+
+### RESULTS : Arduino uno is interfaced with FSR and output values are indicated on a graph.
