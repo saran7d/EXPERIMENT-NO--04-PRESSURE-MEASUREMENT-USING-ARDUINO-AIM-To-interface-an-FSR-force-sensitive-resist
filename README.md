@@ -4,7 +4,7 @@
 ###  NAME: SARAN S S
 ###  ROLL NO :212221220048
 ###  DEPARTMENT:INFORMATION TECHNOLOGY 
-### YEAR: 3RD YEAR
+
 ## AIM: 
 To interface an FSR(force sensitive resistor) and scale the output voltage obtained to pressure applied 
  
